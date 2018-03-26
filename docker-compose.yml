@@ -9,6 +9,7 @@ services:
       - "8189:8189"
       - "7088:7088"
       - "7089:7089"
+
   app:
     build:
       context: app
@@ -26,7 +27,7 @@ services:
       - DB_ADAPTER=mysql
       - DB_HOST=35.198.168.59  
       - MM_USERNAME=mattermost
-      - MM_PASSWORD=changeme
+      - MM_PASSWORD=....
       - MM_DBNAME=mattermost
       # in case your config is not in default location
       #- MM_CONFIG=/mattermost/config/config.json
