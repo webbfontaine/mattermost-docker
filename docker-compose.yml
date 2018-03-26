@@ -24,11 +24,13 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       # set same as db credentials and dbname
-      - DB_ADAPTER=mysql
-      - DB_HOST=35.198.168.59  
+      - MM_SQLSETTINGS_DRIVERNAME=mysql
+      - DB_HOST=35.198.168.59 
+      - DB_PORT_NUMBER=3306 
       - MM_USERNAME=mattermost
-      - MM_PASSWORD=....
+      - MM_PASSWORD=${PASSWORD}
       - MM_DBNAME=mattermost
+      - MM_SQLSETTINGS_DATASOURCE=mattermost:${PASSWORD}@tcp(35.198.168.59:3306)/mattermost?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s
       # in case your config is not in default location
       #- MM_CONFIG=/mattermost/config/config.json
 
