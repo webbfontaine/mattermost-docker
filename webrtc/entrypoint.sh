@@ -2,6 +2,7 @@
 
 JANUS_CFG="/opt/janus/etc/janus/janus.cfg"
 JANUS_TRANSPORT_HTTP_CFG="/opt/janus/etc/janus/janus.transport.http.cfg"
+JANUS_TRANSPORT_WS_CFG="/opt/janus/etc/janus/janus.transport.websockets.cfg"
 
 # Use this to set the new config value, needs 2 parameters.
 # You could check that $1 and $1 is set, but I am lazy
@@ -20,11 +21,13 @@ if [ "$CERT_PEM" != "" ]
 then
     set_config cert_pem $CERT_PEM $JANUS_CFG
     set_config cert_pem $CERT_PEM $JANUS_TRANSPORT_HTTP_CFG
+    set_config cert_pem $CERT_PEM $JANUS_TRANSPORT_WS_CFG
 fi
 if [ "$CERT_KEY" != "" ]
 then
     set_config cert_key $CERT_KEY $JANUS_CFG
     set_config cert_key $CERT_KEY $JANUS_TRANSPORT_HTTP_CFG
+    set_config cert_key $CERT_KEY $JANUS_TRANSPORT_WS_CFG
 fi
 
 /opt/janus/bin/janus
