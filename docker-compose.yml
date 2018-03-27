@@ -56,4 +56,4 @@ services:
       - /etc/localtime:/etc/localtime:ro
     # Uncomment for SSL
     # environment:
-    #  - MATTERMOST_ENABLE_SSL=true
+      - MATTERMOST_ENABLE_SSL=true
