@@ -2,13 +2,23 @@ version: "2"
 
 services:
   webrtc:
-    image: mattermost/webrtc
+    build:
+      context: webrtc
     restart: unless-stopped
     ports:
       - "8188:8188"
       - "8189:8189"
       - "7088:7088"
       - "7089:7089"
+    volumes:
+      # This directory must have cert files if you want to enable SSL
+      - ./volumes/webrtc/certs:/certs:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      # set same as db credentials and dbname
+      - ADMIN_SECRET=toto
+      - CERT_PEM=/certs/star_webbfontaine_com.crt
+      - CERT_KEY=/certs/star_webbfontaine_com.key
 
   app:
     build:
