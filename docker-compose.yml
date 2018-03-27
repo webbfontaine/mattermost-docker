@@ -35,10 +35,10 @@ services:
     environment:
       # set same as db credentials and dbname
       - MM_SQLSETTINGS_DRIVERNAME=mysql
-      - DB_HOST=35.198.168.59 
+      - DB_HOST=${DB_HOST}
       - DB_PORT_NUMBER=3306 
       - MM_USERNAME=mattermost
-      - MM_PASSWORD=${PASSWORD}
+      - MM_PASSWORD=${DB_PASSWORD}
       - MM_DBNAME=mattermost
       - MM_SQLSETTINGS_DATASOURCE=mattermost:${DB_PASSWORD}@tcp(35.198.168.59:3306)/mattermost?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s
       # in case your config is not in default location
