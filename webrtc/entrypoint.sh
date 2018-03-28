@@ -9,7 +9,7 @@ JANUS_TRANSPORT_WS_CFG="/opt/janus/etc/janus/janus.transport.websockets.cfg"
 set_config(){
     REPLACE=`echo $2 | sed 's/\//\\\\\//g'`
     echo "$3 : Using : $1=$2"
-    sed -i "s/^\($1\s*=\s*\).*\$/\1$REPLACE/" $3
+    sed -i "s/^;\?\(\s*$1\s*=\s*\).*\$/\1$REPLACE/" $3
 }
 
 if [ "$ADMIN_SECRET" != "" ]
