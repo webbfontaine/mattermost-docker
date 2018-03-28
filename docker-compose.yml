@@ -15,7 +15,7 @@ services:
       - ./volumes/webrtc/cert:/certs:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - DEBUG_DEVEL=${JANUS_DEBUG_LEVEL}
+      - DEBUG_LEVEL=${JANUS_DEBUG_LEVEL}
       - ADMIN_SECRET=${JANUS_SECRET}
       - CERT_PEM=/certs/star_webbfontaine_com.crt
       - CERT_KEY=/certs/star_webbfontaine_com.key
