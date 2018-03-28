@@ -29,5 +29,11 @@ then
     set_config cert_key $CERT_KEY $JANUS_TRANSPORT_HTTP_CFG
     set_config cert_key $CERT_KEY $JANUS_TRANSPORT_WS_CFG
 fi
+if [ "$DEBUG_LEVEL" != "" ]
+then
+    set_config debug_level $DEBUG_LEVEL $JANUS_CFG
+fi
+
+
 
 /opt/janus/bin/janus
