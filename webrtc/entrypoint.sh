@@ -33,6 +33,8 @@ fi
 if [ "$DEBUG_LEVEL" != "" ]
 then
     set_config debug_level $DEBUG_LEVEL $JANUS_CFG
+    set_config nice_debug true $JANUS_CFG
+    set_config ws_logging $DEBUG_LEVEL $JANUS_TRANSPORT_WS_CFG
 fi
 
 
