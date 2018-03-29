@@ -19,6 +19,7 @@ services:
       - ADMIN_SECRET=${JANUS_SECRET}
       - CERT_PEM=/certs/star_webbfontaine_com.crt
       - CERT_KEY=/certs/star_webbfontaine_com.key
+    network_mode: host
 
   app:
     build:
