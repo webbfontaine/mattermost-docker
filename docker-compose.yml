@@ -10,7 +10,7 @@ services:
     environment:
       - MTP_HOST=chat.webbfontaine.com
       - MTP_RELAY=smtp.mailgun.org
-      - MTP_PORT=587
+      - MTP_PORT=2525
       - MTP_USER=${SMTP_USER}
       - MTP_PASS=${SMTP_PASSWORD}
 
