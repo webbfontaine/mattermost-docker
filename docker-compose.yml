@@ -1,6 +1,19 @@
 version: "2"
 
 services:
+  smtp:
+    build:
+          context: smtp
+    restart: unless-stopped
+    ports:
+      - "25:25"
+    environment:
+      - MTP_HOST=chat.webbfontaine.com
+      - MTP_RELAY=smtp.mailgun.org
+      - MTP_PORT=587
+      - MTP_USER=${SMTP_USER}
+      - MTP_PASS=${SMTP_PASSWORD}
+
   webrtc:
     build:
       context: webrtc

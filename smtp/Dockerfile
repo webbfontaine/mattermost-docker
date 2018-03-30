@@ -1,21 +1,20 @@
 FROM centos:7
 
+RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
+    yum updateinfo -y && \
+    yum update -y glibc && \
+    yum install -y epel-release && \
+    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 && \
+    yum install -y python34-devel postfix cyrus-sasl cyrus-sasl-plain mailx && \
+    yum clean all
 
-RUN yum update -y
-#>> Postfix setup
-RUN yum install postfix cyrus-sasl-plain cyrus-sasl-md5 -y
+RUN curl https://bootstrap.pypa.io/get-pip.py | python3.4 && \
+    pip3 install chaperone
 
+RUN mkdir -p /etc/chaperone.d
+COPY chaperone.conf /etc/chaperone.d/chaperone.conf
 
+COPY docker-setup.sh /docker-setup.sh
+RUN chmod +x /docker-setup.sh
 
-# main.cf
-RUN postconf -e smtp_tls_security_level=encrypt
-RUN postconf -e smtp_sasl_auth_enable=yes
-RUN postconf -e smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
-RUN postconf -e smtp_sasl_security_options=noanonymous
-
-
-# Add and setup entrypoint
-COPY entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
-
-EXPOSE 25
+ENTRYPOINT ["/usr/bin/chaperone"]
